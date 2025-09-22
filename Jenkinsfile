@@ -5,17 +5,17 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                // You can add steps here to checkout from a Git repository
-                // For now, assume the code is already in the workspace
+                // The declarative checkout is handled automatically
             }
         }
 
         stage('Maven Build') {
             steps {
                 echo 'Building the backend with Maven...'
-                // Run the Maven build command inside the backend-service directory
+                // Use the 'bat' command for Windows
                 dir('JFSD_BackendDeployment-main/JFSD_BackendDeployment-main') {
-                    sh 'mvn clean install -DskipTests'
+                    // Make sure 'mvn' is in the system PATH of the Jenkins agent
+                    bat 'mvn clean install -DskipTests'
                 }
             }
         }
@@ -23,16 +23,16 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker images...'
-                // Use docker-compose to build both backend and frontend images
-                sh 'docker-compose build --no-cache'
+                // Use the 'bat' command for Windows
+                bat 'docker-compose build --no-cache'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Starting Docker containers...'
-                // Start all services defined in docker-compose.yml
-                sh 'docker-compose up -d'
+                // Use the 'bat' command for Windows
+                bat 'docker-compose up -d'
             }
         }
     }
