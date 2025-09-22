@@ -1,0 +1,72 @@
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mainfeedback
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Combined Backend Service
+  backend-service:
+    build: 
+      context: ./JFSD_BackendDeployment-main/JFSD_BackendDeployment-main
+      dockerfile: Dockerfile
+    container_name: backend-service
+    ports:
+      - "2001:2001"
+      - "2002:2002"
+      - "2003:2003"
+      - "2004:2004"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mainfeedback?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+    restart: unless-stopped
+      
+  # React Frontend
+  frontend:
+    build: 
+      context: ./JFSD_FrontendDeployment-main/JFSD_FrontendDeployment-main
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    ports:
+      - "3030:3000"
+    environment:
+      # Corrected URLs for inter-container communication
+      - REACT_APP_STUDENT_SERVICE_URL=http://backend-service:2001
+      - REACT_APP_ADMIN_SERVICE_URL=http://backend-service:2002
+      - REACT_APP_COURSE_SERVICE_URL=http://backend-service:2003
+      - REACT_APP_FACULTY_SERVICE_URL=http://backend-service:2004
+    depends_on:
+      - backend-service
+    networks:
+      - app-network
+    restart: unless-stopped
+
+# Volumes
+volumes:
+  mysql_data:
+    driver: local
+  app_uploads:
+    driver: local
+  app_logs:
+    driver: local
+
+# Networks
+networks:
+  app-network:
+    driver: bridge

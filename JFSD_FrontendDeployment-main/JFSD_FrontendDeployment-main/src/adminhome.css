@@ -1,0 +1,229 @@
+/* Base Layout */
+.admin-home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f4f6; /* Light gray background */
+}
+
+/* Header Styles */
+.header {
+    background-color: #1995ad; /* Vibrant blue */
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+
+/* Navigation Styles */
+/* Navigation Styles */
+.navbar {
+    background-color: white; /* White background for contrast */
+    padding: 1rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox layout for horizontal alignment */
+    flex-direction: row; /* Align items in a single row */
+    justify-content: center; /* Center items horizontally */
+    gap: 1rem; /* Space between navbar items */
+}
+
+.navbar li {
+    position: relative; /* To position submenus absolutely */
+}
+
+.navbar button {
+    background-color: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    color: #2563eb; /* Blue text */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 0.375rem;
+}
+
+.navbar button:hover {
+    background-color: #dbeafe; /* Light blue hover */
+    color: #1e3a8a; /* Darker blue */
+}
+
+.submenu {
+    position: absolute; /* Position submenu below the parent item */
+    top: 100%; /* Align submenu right below the parent */
+    left: 0;
+    background-color: #f9fafb; /* Very light gray */
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+.navbar li:hover .submenu {
+    display: block; /* Show submenu on hover */
+}
+
+.submenu li {
+    margin: 0.25rem 0;
+}
+
+.submenu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #374151; /* Neutral dark gray text */
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu a:hover {
+    background-color: #dbeafe; /* Light blue hover */
+    color: #1e3a8a; /* Darker blue */
+}
+
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 5rem;
+    max-width: 1452px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.admin-details {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #374151;
+}
+
+.admin-details h2 {
+    color: #2563eb; /* Vibrant blue for headings */
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.admin-details p {
+    margin: 0.75rem 0;
+    color: #4b5563; /* Neutral gray */
+}
+
+.admin-details strong {
+    color: #1f2937; /* Darker neutral gray */
+    margin-right: 0.5rem;
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #ef4444; /* Red */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #dc2626; /* Darker red */
+}
+
+/* Footer */
+.footer {
+    background-color: #1995ad; /* Deep blue */
+    color: white;
+    text-align: center;
+    padding: 0.1rem;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .submenu {
+        margin-left: 1rem;
+    }
+
+    .admin-details {
+        padding: 1.5rem;
+    }
+}
+
+.content {
+    padding: 20px;
+    background-color: #f9fafb; /* Light gray for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px;
+}
+
+.welcome-section h2 {
+    color: #374151; /* Dark gray for headings */
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 16px;
+    color: #4b5563; /* Muted gray for text */
+    margin-bottom: 20px;
+}
+
+.highlights-section h3,
+.tips-section h3 {
+    color: #1d4ed8; /* Vibrant blue for section titles */
+    margin-bottom: 10px;
+}
+
+.highlights-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #4b5563; /* Gray for list items */
+    font-size: 16px;
+}
+
+.tips-section p {
+    font-size: 16px;
+    color: #10b981; /* Green for encouraging text */
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.features-section ul, .guidelines-section ul, .resources-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #4b5563; /* Muted gray for text */
+    font-size: 16px;
+}
+
+.features-section h3, .guidelines-section h3, .resources-section h3 {
+    color: #1d4ed8; /* Vibrant blue for titles */
+    margin-bottom: 10px;
+}
+
+.resources-section ul a {
+    text-decoration: none;
+    color: #1d4ed8;
+    transition: color 0.2s;
+}
+
+.resources-section ul a:hover {
+    color: #2563eb; /* Darker blue on hover */
+}

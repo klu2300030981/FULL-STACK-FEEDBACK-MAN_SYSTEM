@@ -1,0 +1,131 @@
+.login-container {
+    width: 360px;
+    margin: 60px auto;
+    padding: 40px;
+    border: 1px solid #d1d5db; /* Light border for a clean look */
+    border-radius: 10px;
+    background-color: #ffffff; /* Pure white background */
+    font-family: 'Roboto', Arial, sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.header1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #1995ad;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px; /* Subtle spacing for elegance */
+}
+
+.footer1 {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #1995ad;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: #374151;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 500; /* Medium weight for better readability */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9fafb;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1995ad; /* Match focus color with header/footer */
+    box-shadow: 0 0 6px rgba(25, 149, 173, 0.3);
+}
+
+.form-group .role-group {
+    display: flex;
+    justify-content: space-between; /* Spread out radio buttons evenly */
+    margin-top: 10px;
+}
+
+.form-group .role-group label {
+    font-size: 14px;
+    color: #4b5563;
+    cursor: pointer; /* Enhance usability */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between radio button and label */
+}
+
+.form-group .role-group input {
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1995ad;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+button:hover {
+    background-color: #15798f; /* Slightly darker shade on hover */
+}
+
+.error {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.links-container {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.links-container a {
+    color: #1995ad;
+    text-decoration: none;
+}
+
+.links-container a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background-color: #f3f4f6; /* Very light gray for a clean, modern feel */
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}

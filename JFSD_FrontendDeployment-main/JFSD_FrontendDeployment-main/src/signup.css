@@ -1,0 +1,163 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.header1 {
+    background-color: #1995ad;
+    color: white;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer1 {
+    background-color: #1995ad;
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.signup-container {
+    max-width: 700px; /* Reduced width */
+    margin: 30px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px; /* Reduced padding */
+}
+
+.signup-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px; /* Reduced font size */
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px; /* Increased gap between columns */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px; /* Reduced font size */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"] {
+    padding: 6px;
+    font-size: 13px; /* Reduced font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #4caf50;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 8px; /* Reduced space */
+}
+
+.form-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reduced gap */
+}
+
+button {
+    grid-column: 1 / 3; /* Spans both columns */
+    background-color: #4caf50;
+    color: white;
+    font-size: 14px; /* Reduced font size */
+    padding: 8px 12px; /* Reduced padding */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.success {
+    grid-column: 1 / 3;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px; /* Reduced font size */
+}
+
+.error {
+    grid-column: 1 / 3;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px; /* Reduced font size */
+}
+
+/* Password strength indicator */
+.password-strength {
+    font-size: 12px;
+    margin-top: 5px;
+    grid-column: 1 / 3;
+}
+
+.password-strength span {
+    display: inline-block;
+    width: 15px; /* Reduced width */
+    height: 8px; /* Reduced height */
+    margin-right: 5px;
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+.password-strength span.weak {
+    background-color: red;
+}
+
+.password-strength span.medium {
+    background-color: orange;
+}
+
+.password-strength span.strong {
+    background-color: green;
+}
+
+/* Adjust gender selection placement */
+.form-group.gender {
+    grid-column: 2; /* Moves gender to the second column */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr; /* Single column layout on small screens */
+    }
+
+    button {
+        grid-column: 1; /* Button takes the full width */
+    }
+}
