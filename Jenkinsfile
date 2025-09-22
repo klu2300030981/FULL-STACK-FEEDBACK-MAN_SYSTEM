@@ -1,8 +1,6 @@
 pipeline {
     agent any
     tools {
-        // This name must match the "Name" you gave the Maven tool in Jenkins,
-        // which appears to be "MAVEN_HOME" from your screenshot.
         maven 'MAVEN_HOME' 
     }
     stages {
@@ -15,7 +13,8 @@ pipeline {
             steps {
                 echo 'Building the backend with Maven...'
                 dir('JFSD_BackendDeployment-main/JFSD_BackendDeployment-main') {
-                    withMaven(jdk: 'JDK 17') {
+                    // Update the JDK name to match your Jenkins configuration
+                    withMaven(jdk: 'JDK_HOME') {
                         bat 'mvn clean install -DskipTests'
                     }
                 }
