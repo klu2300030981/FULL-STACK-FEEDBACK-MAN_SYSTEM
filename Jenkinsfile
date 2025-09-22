@@ -1,42 +1,40 @@
 pipeline {
     agent any
-
+    tools {
+        // This name must match the "Name" you gave to the Maven tool in Jenkins,
+        // which appears to be "MAVEN_HOME" from your screenshot.
+        maven 'MAVEN_HOME' 
+    }
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                // The declarative checkout is handled automatically
             }
         }
-
         stage('Maven Build') {
             steps {
                 echo 'Building the backend with Maven...'
-                // Use the 'bat' command for Windows
                 dir('JFSD_BackendDeployment-main/JFSD_BackendDeployment-main') {
-                    // Make sure 'mvn' is in the system PATH of the Jenkins agent
-                    bat 'mvn clean install -DskipTests'
+                    // This step will now use the Maven installation configured in Jenkins.
+                    withMaven(jdk: 'JDK 17') {
+                        bat 'mvn clean install -DskipTests'
+                    }
                 }
             }
         }
-
         stage('Docker Build') {
             steps {
                 echo 'Building Docker images...'
-                // Use the 'bat' command for Windows
                 bat 'docker-compose build --no-cache'
             }
         }
-
         stage('Deploy') {
             steps {
                 echo 'Starting Docker containers...'
-                // Use the 'bat' command for Windows
                 bat 'docker-compose up -d'
             }
         }
     }
-
     post {
         always {
             echo 'Pipeline finished. Check the container logs for status.'
