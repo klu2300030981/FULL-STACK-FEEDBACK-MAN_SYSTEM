@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Starting Docker containers...'
-                // Add this new cleanup step before deployment
-                bat 'docker-compose down'
+                // This command will remove the containers and their volumes from previous runs
+                bat 'docker-compose down -v --remove-orphans'
                 bat 'docker-compose up -d'
             }
         }
