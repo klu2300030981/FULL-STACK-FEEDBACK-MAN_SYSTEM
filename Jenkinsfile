@@ -13,7 +13,6 @@ pipeline {
             steps {
                 echo 'Building the backend with Maven...'
                 dir('JFSD_BackendDeployment-main/JFSD_BackendDeployment-main') {
-                    // Update the JDK name to match your Jenkins configuration
                     withMaven(jdk: 'JDK_HOME') {
                         bat 'mvn clean install -DskipTests'
                     }
@@ -29,6 +28,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Starting Docker containers...'
+                // Add this new cleanup step before deployment
+                bat 'docker-compose down'
                 bat 'docker-compose up -d'
             }
         }
